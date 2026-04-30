@@ -9,6 +9,7 @@ class Contact {
     string PhoneNumber;
 
 public:
+    // setters
     void setFirstName(string firstName) {
 
         FirstName = firstName;
@@ -23,6 +24,7 @@ public:
         PhoneNumber = phoneNumber;
     }
 
+    // Getters
     string getFirstName() {
 
         return FirstName;
@@ -38,6 +40,14 @@ public:
         cout << "First Name: " << FirstName << endl;
         cout << "Last Name: " << LastName << endl;
         cout << "Phone Number: " << PhoneNumber << endl;
+    }
+
+    Contact(string firstName, string lastName, string phoneNumber) {
+
+        FirstName = firstName;
+        LastName = lastName;
+        PhoneNumber = phoneNumber;
+
     }
 };
 
@@ -66,7 +76,7 @@ class FamilyFriendsContact : public Contact {
 };
 
 void writeContact();
-void addContact(Contact Firstname);
+void addContact();
 
 int main() {
 
@@ -81,29 +91,32 @@ void writeContact() {
     contactFile.open("savedContacts.txt", ios::app);
 
     if (contactFile.is_open()) {
-        cout<< "Contact file successfully opened";
+        cout<< "Contact file successfully opened \n\n";
     } else {
-        cout << "Unable to open file";
+        cout << "Unable to open file \n";
     }
 
-    contactFile << "test";
+    addContact();
 
     contactFile.close();
 }
 
-void addContact(Contact newContact) {
+void addContact() {
 
+    // ask for first name input
     string enterFirstName;
-    cout << "Firstname: ";
+    cout << "Enter contacts first name: ";
     cin >> enterFirstName;
 
+    // ask for last name input
     string enterLastName;
-    cout << "Lastname: ";
+    cout << "Enter contact last name: ";
     cin >> enterLastName;
 
+    // ask for phone number input
     string enterPhoneNumber;
-    cout << "PhoneNumber: ";
+    cout << "Enter contact phone number: ";
     cin >> enterPhoneNumber;
 
-    Contact newContact = (enterFirstName, enterLastName, enterPhoneNumber);
+   Contact newContact = Contact(enterFirstName, enterLastName, enterPhoneNumber);
 }
