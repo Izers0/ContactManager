@@ -26,7 +26,6 @@ public:
 
     // Getters
     string getFirstName() {
-
         return FirstName;
     }
     string getLastName() {
@@ -47,7 +46,6 @@ public:
         FirstName = firstName;
         LastName = lastName;
         PhoneNumber = phoneNumber;
-
     }
 };
 
@@ -76,7 +74,7 @@ class FamilyFriendsContact : public Contact {
 };
 
 void writeContact();
-void addContact();
+Contact addContact();
 
 int main() {
 
@@ -91,17 +89,20 @@ void writeContact() {
     contactFile.open("savedContacts.txt", ios::app);
 
     if (contactFile.is_open()) {
-        cout<< "Contact file successfully opened \n\n";
+        cout << "Contact file successfully opened \n\n";
     } else {
         cout << "Unable to open file \n";
     }
 
-    addContact();
+    Contact writeNewContact = addContact();
+
+    contactFile << writeNewContact.getFirstName() << " " << writeNewContact.getLastName()
+                << " " << writeNewContact.getPhoneNumber() << "\n";
 
     contactFile.close();
 }
 
-void addContact() {
+Contact addContact() {
 
     // ask for first name input
     string enterFirstName;
@@ -119,4 +120,6 @@ void addContact() {
     cin >> enterPhoneNumber;
 
    Contact newContact = Contact(enterFirstName, enterLastName, enterPhoneNumber);
+
+   return newContact;
 }
