@@ -114,9 +114,9 @@ void displayContacts() {
     if (contactFile.is_open()) {
         cout << "Contact file successfully opened when trying to display \n\n";
 
-        while (contactFile.good()) {
+        while (contactFile) {
 
-            contactFile >> readFile;
+            getline(contactFile, readFile);
 
             cout << readFile << "\n";
         }
