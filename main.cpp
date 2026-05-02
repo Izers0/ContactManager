@@ -74,11 +74,13 @@ class FamilyFriendsContact : public Contact {
 };
 
 void writeContact();
+void displayContacts();
 Contact addContact();
 
 int main() {
 
     writeContact();
+    displayContacts();
 
 }
 
@@ -100,6 +102,27 @@ void writeContact() {
                 << " " << writeNewContact.getPhoneNumber() << "\n";
 
     contactFile.close();
+}
+
+void displayContacts() {
+
+    ifstream contactFile ("savedContacts.txt");
+
+    // holds file contents
+    string readFile;
+
+    if (contactFile.is_open()) {
+        cout << "Contact file successfully opened when trying to display \n\n";
+
+        while (contactFile.good()) {
+
+            contactFile >> readFile;
+
+            cout << readFile << "\n";
+        }
+    } else {
+        cout << "Unable to open file when trying to display \n";
+    }
 }
 
 Contact addContact() {
