@@ -75,13 +75,51 @@ class FamilyFriendsContact : public Contact {
 
 void writeContact();
 void displayContacts();
+void editContact();
 Contact addContact();
 
 int main() {
 
-    writeContact();
-    displayContacts();
+    cout << "Contact Management\n";
+    cout << "Do you want to continue to contact manager (y/n)?\n";
 
+    char start;
+    cin >> start;
+
+    cout << endl << endl;
+
+    while (start == 'y') {
+
+        int choice = 0;
+
+        cout << "What do You want to do: \n\n";
+
+        cout << "1. View Contacts\n";
+        cout << "2. Add a new Contact\n";
+        cout << "3. Edit an existing Contact\n";
+        cout << "4. Exit\n\n";
+
+        cin >> choice;
+
+        // Switch statement to take the users choice
+        switch (choice) {
+            case 1:
+                displayContacts();
+                break;
+            case 2:
+                writeContact();
+                break;
+            case 3:
+                editContact();
+                break;
+            case 4:
+                cout << "Goodbye\n";
+                start = false;
+                break;
+            default:
+                cout << "Please Select 1-4";
+        }
+    }
 }
 
 void writeContact() {
@@ -123,6 +161,12 @@ void displayContacts() {
     } else {
         cout << "Unable to open file when trying to display \n";
     }
+}
+
+void editContact() {
+
+
+
 }
 
 Contact addContact() {
