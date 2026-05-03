@@ -77,27 +77,21 @@ void writeContact();
 void displayContacts();
 void editContact();
 Contact addContact();
+void menu();
 
 int main() {
 
     cout << "Contact Management\n";
-    cout << "Do you want to continue to contact manager (y/n)?\n";
 
-    char start;
-    cin >> start;
+    bool programRunning = true;
 
-    cout << endl << endl;
-
-    while (start == 'y') {
+    while (programRunning == true) {
 
         int choice = 0;
 
-        cout << "What do You want to do: \n\n";
+        cout << "What do you want to do: \n\n";
 
-        cout << "1. View Contacts\n";
-        cout << "2. Add a new Contact\n";
-        cout << "3. Edit an existing Contact\n";
-        cout << "4. Exit\n\n";
+        menu();
 
         cin >> choice;
 
@@ -113,13 +107,22 @@ int main() {
                 editContact();
                 break;
             case 4:
-                cout << "Goodbye\n";
-                start = false;
+                cout << "Goodbye";
+                programRunning = false;
                 break;
             default:
-                cout << "Please Select 1-4";
+                cout << "Please Select 1-4\n";
         }
     }
+}
+
+void menu() {
+
+    cout << "1. View Contacts\n";
+    cout << "2. Add a New Contact\n";
+    cout << "3. Edit an Existing Contact\n";
+    cout << "4. Exit\n\n";
+
 }
 
 void writeContact() {
