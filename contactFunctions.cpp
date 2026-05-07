@@ -59,18 +59,29 @@ Contact addContact() {
 
     // ask for first name input
     string enterFirstName;
-    cout << "Enter contacts first name: ";
-    cin >> enterFirstName;
+    do {
+        cout << "Enter contacts first name: ";
+
+        getline(cin, enterFirstName);
+    } while (enterFirstName.empty());
+
 
     // ask for last name input
     string enterLastName;
-    cout << "Enter contact last name: ";
-    cin >> enterLastName;
+    do {
+        cout << "Enter contact last name: ";
+        getline(cin, enterLastName);
+    } while (enterLastName.empty());
 
     // ask for phone number input
-    string enterPhoneNumber;
+    int enterPhoneNumber;
     cout << "Enter contact phone number: ";
-    cin >> enterPhoneNumber;
+    while (!(cin >> enterPhoneNumber)) {
+
+        cout << "Invalid input. Please try again.\n";
+        cin.clear();
+        cin.ignore(10000, '\n');
+    }
 
     Contact newContact = Contact(enterFirstName, enterLastName, enterPhoneNumber);
 
