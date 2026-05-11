@@ -4,6 +4,25 @@
 #include "contactClass.h"
 using namespace std;
 
+void stringBlankSpaceCheck(string name) {
+
+    // check for blank space in a string
+    do {
+        getline(cin, name);
+    } while (name.empty());
+}
+
+void intBlackSpaceCheck(int number) {
+
+    // check for blank space in an integer
+    while (!(cin >> number)) {
+
+        cout << "Invalid input. Please try again.\n";
+        cin.clear();
+        cin.ignore(10000, '\n');
+    }
+}
+
 void menu() {
 
     cout << "1. View Contacts\n";
@@ -62,15 +81,22 @@ Contact addContact() {
     cout << "Enter contacts first name: ";
     cin >> enterFirstName;
 
+    stringBlankSpaceCheck(enterFirstName);
+
+
     // ask for last name input
     string enterLastName;
     cout << "Enter contact last name: ";
     cin >> enterLastName;
 
+    stringBlankSpaceCheck(enterLastName);
+
     // ask for phone number input
     int enterPhoneNumber;
     cout << "Enter contact phone number: ";
     cin >> enterPhoneNumber;
+
+    intBlackSpaceCheck(enterPhoneNumber);
 
     Contact newContact = Contact(enterFirstName, enterLastName, enterPhoneNumber);
 
