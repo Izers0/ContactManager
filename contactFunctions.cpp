@@ -23,13 +23,17 @@ void intBlackSpaceCheck(int number) {
     }
 }
 
-void menu() {
+void stringLength (int limit, string name) {
 
-    cout << "1. View Contacts\n";
-    cout << "2. Add a New Contact\n";
-    cout << "3. Edit an Existing Contact\n";
-    cout << "4. Exit\n\n";
+    // set limit of string
+    int charLimit = limit;
+
+    if (name.length() >= charLimit) {
+        cout << "The Character Limit is " << charLimit << "Please Try Again.\n";
+
+    }
 }
+
 
 void writeContact() {
 
@@ -74,22 +78,43 @@ void displayContacts() {
 
 void editContact() {}
 
-Contact addContact() {
+
+void menu() {
+
+    cout << "1. View Contacts\n";
+    cout << "2. Add a New Contact\n";
+    cout << "3. Edit an Existing Contact\n";
+    cout << "4. Exit\n\n";
+}
+
+
+string getFirstName() {
 
     // ask for first name input
     string enterFirstName;
-    cout << "Enter contacts first name: ";
+    cout << "Enter contacts first name (char limit 15): ";
     cin >> enterFirstName;
 
     stringBlankSpaceCheck(enterFirstName);
+    stringLength(3, enterFirstName);
 
+    return enterFirstName;
+}
+
+string getLastName() {
 
     // ask for last name input
     string enterLastName;
-    cout << "Enter contact last name: ";
+    cout << "Enter contact last name (char limit: 20): ";
     cin >> enterLastName;
 
     stringBlankSpaceCheck(enterLastName);
+    stringLength(3, enterLastName);
+
+    return enterLastName;
+}
+
+int getPhoneNumber() {
 
     // ask for phone number input
     int enterPhoneNumber;
@@ -98,7 +123,13 @@ Contact addContact() {
 
     intBlackSpaceCheck(enterPhoneNumber);
 
-    Contact newContact = Contact(enterFirstName, enterLastName, enterPhoneNumber);
+    return enterPhoneNumber;
+}
+
+
+Contact addContact() {
+
+    Contact newContact = Contact(getFirstName(), getLastName(), getPhoneNumber());
 
     return newContact;
 }

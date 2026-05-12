@@ -4,9 +4,16 @@
 
 void stringBlankSpaceCheck();
 void intBlankSpaceCheck();
-void textValidation();
+void stringLength();
+
 void writeContact();
 void displayContacts();
 void editContact();
+
 void menu();
+
+std::string getFirstName();
+std::string getLastName();
+int getPhoneNumber();
+
 Contact addContact();
