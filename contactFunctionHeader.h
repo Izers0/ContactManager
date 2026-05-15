@@ -2,7 +2,7 @@
 
 #include "contactClass.h"
 
-void stringBlankSpaceCheck();
+void isStringEmpty();
 void intBlankSpaceCheck();
 void stringLength();
 

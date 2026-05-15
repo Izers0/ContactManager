@@ -4,15 +4,17 @@
 #include "contactClass.h"
 using namespace std;
 
-void stringBlankSpaceCheck(string name) {
+bool isStringEmpty(string &name) {
 
-    // check for blank space in a string
-    do {
-        getline(cin, name);
-    } while (name.empty());
+    if (name.empty()) {
+        cout << "Please enter a valid name:\n";
+        return false;
+    }
+
+    return true;
 }
 
-void intBlackSpaceCheck(int number) {
+void intBlackSpaceCheck(int &number) {
 
     // check for blank space in an integer
     while (!(cin >> number)) {
@@ -23,7 +25,7 @@ void intBlackSpaceCheck(int number) {
     }
 }
 
-void stringLength (int limit, string name) {
+void stringLength (int limit, string &name) {
 
     // set limit of string
     int charLimit = limit;
@@ -90,12 +92,13 @@ void menu() {
 
 string getFirstName() {
 
-    // ask for first name input
     string enterFirstName;
     cout << "Enter contacts first name (char limit 15): ";
-    cin >> enterFirstName;
 
-    stringBlankSpaceCheck(enterFirstName);
+    do {
+        cin >> enterFirstName;
+    } while (isStringEmpty(enterFirstName) == false);
+
     stringLength(3, enterFirstName);
 
     return enterFirstName;
@@ -108,7 +111,7 @@ string getLastName() {
     cout << "Enter contact last name (char limit: 20): ";
     cin >> enterLastName;
 
-    stringBlankSpaceCheck(enterLastName);
+    isStringEmpty(enterLastName);
     stringLength(3, enterLastName);
 
     return enterLastName;
