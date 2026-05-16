@@ -7,7 +7,7 @@ class Contact {
 
     std::string FirstName;
     std::string LastName;
-    int PhoneNumber;
+    std::string PhoneNumber;
 
 public:
     // setters
@@ -18,7 +18,7 @@ public:
         LastName = lastName;
     }
 
-    void setPhoneNumber(int phoneNumber) {
+    void setPhoneNumber(std::string phoneNumber) {
         PhoneNumber = phoneNumber;
     }
 
@@ -31,12 +31,11 @@ public:
         return LastName;
     }
 
-    int getPhoneNumber() {
+    std::string getPhoneNumber() {
         return PhoneNumber;
     }
 
-    Contact(std::string firstName, std::string lastName, int phoneNumber) {
-
+    Contact(std::string firstName, std::string lastName, std::string phoneNumber) {
         FirstName = firstName;
         LastName = lastName;
         PhoneNumber = phoneNumber;

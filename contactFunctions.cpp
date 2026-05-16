@@ -4,35 +4,22 @@
 #include "contactClass.h"
 using namespace std;
 
-bool isStringEmpty(string &name) {
+bool isStringEmpty(string &userInput) {
 
-    if (name.empty()) {
-        cout << "Please enter a valid name:\n";
+    // if the string is empty show error and return false else return true
+    if (userInput.empty()) {
         return false;
     }
-
     return true;
 }
 
-void intBlackSpaceCheck(int &number) {
-
-    // check for blank space in an integer
-    while (!(cin >> number)) {
-
-        cout << "Invalid input. Please try again.\n";
-        cin.clear();
-        cin.ignore(10000, '\n');
-    }
-}
-
-void stringLength (int limit, string &name) {
+void stringLength (int limit, string &userInput) {
 
     // set limit of string
     int charLimit = limit;
 
-    if (name.length() >= charLimit) {
-        cout << "The Character Limit is " << charLimit << "Please Try Again.\n";
-
+    if (userInput.length() >= charLimit) {
+        // No More Printing In Validation Code
     }
 }
 
@@ -91,41 +78,41 @@ void menu() {
 
 
 string getFirstName() {
-
     string enterFirstName;
     cout << "Enter contacts first name (char limit 15): ";
 
     do {
-        cin >> enterFirstName;
+        getline(cin, enterFirstName);
+        if (isStringEmpty(enterFirstName) == false) {
+            cout << "Enter a valid First Name";
+        }
     } while (isStringEmpty(enterFirstName) == false);
-
-    stringLength(3, enterFirstName);
-
     return enterFirstName;
 }
 
 string getLastName() {
-
-    // ask for last name input
     string enterLastName;
     cout << "Enter contact last name (char limit: 20): ";
-    cin >> enterLastName;
 
-    isStringEmpty(enterLastName);
-    stringLength(3, enterLastName);
-
+    do {
+        getline(cin, enterLastName);
+        if (isStringEmpty(enterLastName) == false) {
+            cout << "Enter a valid Last Name";
+        }
+    } while (isStringEmpty(enterLastName) == false);
     return enterLastName;
 }
 
-int getPhoneNumber() {
-
-    // ask for phone number input
-    int enterPhoneNumber;
+string getPhoneNumber() {
+    string enterPhoneNumber;
     cout << "Enter contact phone number: ";
-    cin >> enterPhoneNumber;
 
-    intBlackSpaceCheck(enterPhoneNumber);
-
+    do {
+        getline(cin, enterPhoneNumber);
+        if (isStringEmpty(enterPhoneNumber) == false) {
+            cout << "Enter a valid Phone Number";
+        }
+    } while (isStringEmpty(enterPhoneNumber) == false);
     return enterPhoneNumber;
 }
 

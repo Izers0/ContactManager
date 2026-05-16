@@ -14,6 +14,6 @@ void menu();
 
 std::string getFirstName();
 std::string getLastName();
-int getPhoneNumber();
+std::string getPhoneNumber();
 
 Contact addContact();
