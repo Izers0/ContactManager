@@ -9,15 +9,17 @@ int main() {
 
     bool programRunning = true;
 
-    while (programRunning == true) {
-
-        int choice = 0;
+    while (programRunning) {
 
         cout << "What do you want to do: \n\n";
-
         menu();
 
-        cin >> choice;
+        string userInput;
+        getline(cin, userInput);
+
+        /*Need to validate before int conversion*/
+
+        int choice = stoi(userInput);
 
         // Switch statement to take the users choice
         switch (choice) {
