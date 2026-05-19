@@ -65,7 +65,47 @@ void displayContacts() {
     }
 }
 
-void editContact() {}
+void editContact() {
+
+    ifstream contactFile ("savedContacts.txt");
+
+    cout << "Which Contact are you changing:";
+    int userInput;
+    cin >> userInput;
+    // getline(cin, userInput);
+
+    // need a check for strings not in the file
+
+    contactFile.open("savedContacts.txt");
+
+    if (contactFile.is_open()) {
+        cout << "Contact file successfully opened when trying to display \n\n";
+
+    } else {
+        cout << "Unable to open file when trying to display \n";
+    }
+
+    int currentContact = 0;
+    string line;
+
+    // while the end of the file has not been reached keep reading the next line from the file
+    while (!contactFile.eof()) {
+        currentContact++;
+        //read the next line of the file into the line variable
+        getline(contactFile, line);
+        if (currentContact == userInput) {
+            break;
+        }
+
+        if (currentContact < userInput) {
+            cout << "Line not found\n";
+            cout << "There are only " << currentContact << " contacts in this file\n";
+        } else {
+            cout << currentContact << "\n";
+        }
+        contactFile.close();
+    }
+}
 
 
 void menu() {
