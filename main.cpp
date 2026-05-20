@@ -14,15 +14,17 @@ int main() {
         cout << "What do you want to do: \n\n";
         menu();
 
-        string userInput;
+        int userInput;
+        cin >> userInput;
+        /*
         getline(cin, userInput);
 
-        /*Need to validate before int conversion*/
+        /*Need to validate before int conversion
 
-        int choice = stoi(userInput);
+        int choice = stoi(userInput); */
 
         // Switch statement to take the users choice
-        switch (choice) {
+        switch (userInput) {
             case 1:
                 displayContacts();
                 break;

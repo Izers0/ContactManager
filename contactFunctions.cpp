@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include "contactClass.h"
+#include <vector>
 using namespace std;
 
 bool isStringEmpty(string &userInput) {
@@ -67,44 +68,32 @@ void displayContacts() {
 
 void editContact() {
 
-    ifstream contactFile ("savedContacts.txt");
+    fstream contactFile ("savedContacts.txt");
 
-    cout << "Which Contact are you changing:";
-    int userInput;
-    cin >> userInput;
-    // getline(cin, userInput);
-
-    // need a check for strings not in the file
-
-    contactFile.open("savedContacts.txt");
+    vector <string> contacts;
 
     if (contactFile.is_open()) {
-        cout << "Contact file successfully opened when trying to display \n\n";
+        string readFile;
 
-    } else {
-        cout << "Unable to open file when trying to display \n";
-    }
-
-    int currentContact = 0;
-    string line;
-
-    // while the end of the file has not been reached keep reading the next line from the file
-    while (!contactFile.eof()) {
-        currentContact++;
-        //read the next line of the file into the line variable
-        getline(contactFile, line);
-        if (currentContact == userInput) {
-            break;
-        }
-
-        if (currentContact < userInput) {
-            cout << "Line not found\n";
-            cout << "There are only " << currentContact << " contacts in this file\n";
-        } else {
-            cout << currentContact << "\n";
+        // temporarily store each line in the file in a vector
+        while (getline(contactFile, readFile)) {
+            contacts.push_back(readFile);
         }
         contactFile.close();
     }
+
+    cout << "Which Contact do you wish to edit: ";
+
+    // user chooses the index of the contact they want to change
+    int userInput;
+    cin >> userInput;
+
+    // initialise the count of what line is being searched through
+    int currentContact = 0;
+    string line;
+
+    // Compare user choice to vector index
+
 }
 
 
