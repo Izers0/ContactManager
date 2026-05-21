@@ -82,18 +82,30 @@ void editContact() {
         contactFile.close();
     }
 
+    // loop through contacts and give each a number
+    for (int i = 0; i < contacts.size(); i++) {
+        cout << i + 1 << ". " << contacts[i] << "\n";
+    }
+
     cout << "Which Contact do you wish to edit: ";
 
     // user chooses the index of the contact they want to change
     int userInput;
     cin >> userInput;
 
-    // initialise the count of what line is being searched through
-    int currentContact = 0;
-    string line;
+    string userEdit;
+    cin >> userEdit;
 
     // Compare user choice to vector index
+    cout << contacts[userInput - 1] << "\n";
+    contacts[userInput - 1] = userEdit;
 
+
+    /*
+    for (int i = 0; i < contacts.size(); i++) {
+
+        cout << i + 1 << ". " << contacts[userInput] << "\n";
+    } */
 }
 
 
