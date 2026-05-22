@@ -2,10 +2,6 @@
 
 #include "contactClass.h"
 
-void isStringEmpty();
-void intBlankSpaceCheck();
-void stringLength();
-
 void writeContact();
 void displayContacts();
 void editContact();

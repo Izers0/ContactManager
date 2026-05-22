@@ -7,4 +7,6 @@ add_executable(ContactManager main.cpp
         contactFunctionHeader.h
         contactFunctions.cpp
         contactClass.h
+        validation.cpp
+        validation.h
 )

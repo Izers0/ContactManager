@@ -16,22 +16,19 @@ int main() {
 
         int userInput;
         cin >> userInput;
-        /*
-        getline(cin, userInput);
-
-        /*Need to validate before int conversion
-
-        int choice = stoi(userInput); */
 
         // Switch statement to take the users choice
         switch (userInput) {
             case 1:
+                cin.ignore();
                 displayContacts();
                 break;
             case 2:
+                cin.ignore();
                 writeContact();
                 break;
             case 3:
+                cin.ignore();
                 editContact();
                 break;
             case 4:
