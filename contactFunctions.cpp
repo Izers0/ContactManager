@@ -82,30 +82,38 @@ void editContact() {
         contactFile.close();
     }
 
+    cout << "Which Contact do you wish to edit: \n";
+
     // loop through contacts and give each a number
     for (int i = 0; i < contacts.size(); i++) {
         cout << i + 1 << ". " << contacts[i] << "\n";
     }
 
-    cout << "Which Contact do you wish to edit: ";
-
     // user chooses the index of the contact they want to change
     int userInput;
     cin >> userInput;
 
-    string userEdit;
-    cin >> userEdit;
+    cin.ignore();
 
-    // Compare user choice to vector index
     cout << contacts[userInput - 1] << "\n";
+
+    string userEdit;
+    getline(cin, userEdit);
+
+    // replace element in the vector with userEdit
     contacts[userInput - 1] = userEdit;
 
+    contactFile.open("savedContacts.txt");
 
-    /*
-    for (int i = 0; i < contacts.size(); i++) {
+    if (contactFile.is_open()) {
 
-        cout << i + 1 << ". " << contacts[userInput] << "\n";
-    } */
+        for (int i = 0; i < contacts.size(); i++) {
+            contactFile << i + 1 << ". " << contacts[i] << "\n";
+        }
+        contactFile.close();
+    } else {
+        cout << "Unable to open file \n";
+    }
 }
 
 
