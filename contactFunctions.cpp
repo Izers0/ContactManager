@@ -84,12 +84,63 @@ void editContact() {
     // replace element in the vector with userEdit
     contacts[userInput - 1] = userEdit;
 
+    /* Rewrite to file */
     contactFile.open("savedContacts.txt");
 
     if (contactFile.is_open()) {
 
         for (int i = 0; i < contacts.size(); i++) {
-            contactFile << i + 1 << ". " << contacts[i] << "\n";
+            contactFile << i + 1 << contacts[i] << "\n";
+        }
+        contactFile.close();
+    } else {
+        cout << "Unable to open file \n";
+    }
+}
+
+
+void deleteContact() {
+
+    fstream contactFile ("savedContacts.txt");
+
+    vector <string> contacts;
+
+    if (contactFile.is_open()) {
+        string readFile;
+
+        // temporarily store each line in the file in a vector
+        while (getline(contactFile, readFile)) {
+            contacts.push_back(readFile);
+        }
+        contactFile.close();
+    }
+
+    cout << "Which Contact do you wish to Delete: \n";
+
+    // loop through contacts and give each a number
+    for (int i = 0; i < contacts.size(); i++) {
+        cout << i + 1 << ". " << contacts[i] << "\n";
+    }
+
+    // user chooses the index of the contact they want to delete
+    int userInput;
+    cin >> userInput;
+
+    cin.ignore();
+
+    cout << contacts[userInput - 1] << " has been deleted." << "\n";
+
+    // delete element using the userInput
+    contacts.erase(contacts.begin() + userInput - 1);
+
+
+    /* Rewrite to file */
+    contactFile.open("savedContacts.txt");
+
+    if (contactFile.is_open()) {
+
+        for (int i = 0; i < contacts.size(); i++) {
+            contactFile << i + 1 << contacts[i] << "\n";
         }
         contactFile.close();
     } else {
@@ -103,7 +154,8 @@ void menu() {
     cout << "1. View Contacts\n";
     cout << "2. Add a New Contact\n";
     cout << "3. Edit an Existing Contact\n";
-    cout << "4. Exit\n\n";
+    cout << "4. Delete a Existing Contact\n";
+    cout << "5. Exit\n\n";
 }
 
 

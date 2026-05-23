@@ -32,6 +32,10 @@ int main() {
                 editContact();
                 break;
             case 4:
+                cin.ignore();
+                deleteContact();
+                break;
+            case 5:
                 cout << "Goodbye";
                 programRunning = false;
                 break;

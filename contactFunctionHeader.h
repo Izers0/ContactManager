@@ -5,6 +5,7 @@
 void writeContact();
 void displayContacts();
 void editContact();
+void deleteContact();
 
 void menu();
 
