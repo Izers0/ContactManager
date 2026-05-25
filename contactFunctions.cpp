@@ -36,9 +36,7 @@ void displayContacts() {
     if (contactFile.is_open()) {
         cout << "Contact file successfully opened when trying to display \n\n";
 
-        while (contactFile) {
-
-            getline(contactFile, readFile);
+        while (getline(contactFile, readFile)) {
 
             cout << readFile << "\n";
         }
@@ -49,23 +47,23 @@ void displayContacts() {
 
 void editContact() {
 
-    fstream contactFile ("savedContacts.txt");
+    ifstream readContactFile ("savedContacts.txt");
 
     vector <string> contacts;
 
-    if (contactFile.is_open()) {
+    if (readContactFile.is_open()) {
         string readFile;
 
         // temporarily store each line in the file in a vector
-        while (getline(contactFile, readFile)) {
+        while (getline(readContactFile, readFile)) {
             contacts.push_back(readFile);
         }
-        contactFile.close();
+        readContactFile.close();
     }
 
     cout << "Which Contact do you wish to edit: \n";
 
-    // loop through contacts and give each a number
+    // loop through contacts and give each a number (Display format for user)
     for (int i = 0; i < contacts.size(); i++) {
         cout << i + 1 << ". " << contacts[i] << "\n";
     }
@@ -85,34 +83,33 @@ void editContact() {
     contacts[userInput - 1] = userEdit;
 
     /* Rewrite to file */
-    contactFile.open("savedContacts.txt");
+    ofstream rewriteContactFile ("savedContacts.txt");
 
-    if (contactFile.is_open()) {
+    if (rewriteContactFile.is_open()) {
 
         for (int i = 0; i < contacts.size(); i++) {
-            contactFile << i + 1 << contacts[i] << "\n";
+            rewriteContactFile << contacts[i] << "\n";
         }
-        contactFile.close();
+        rewriteContactFile.close();
     } else {
         cout << "Unable to open file \n";
     }
 }
 
-
 void deleteContact() {
 
-    fstream contactFile ("savedContacts.txt");
+    ifstream readContactFile ("savedContacts.txt");
 
     vector <string> contacts;
 
-    if (contactFile.is_open()) {
+    if (readContactFile.is_open()) {
         string readFile;
 
         // temporarily store each line in the file in a vector
-        while (getline(contactFile, readFile)) {
+        while (getline(readContactFile, readFile)) {
             contacts.push_back(readFile);
         }
-        contactFile.close();
+        readContactFile.close();
     }
 
     cout << "Which Contact do you wish to Delete: \n";
@@ -135,19 +132,18 @@ void deleteContact() {
 
 
     /* Rewrite to file */
-    contactFile.open("savedContacts.txt");
+    ofstream rewriteContactFile ("savedContacts.txt");
 
-    if (contactFile.is_open()) {
+    if (rewriteContactFile.is_open()) {
 
         for (int i = 0; i < contacts.size(); i++) {
-            contactFile << i + 1 << contacts[i] << "\n";
+            rewriteContactFile << contacts[i] << "\n";
         }
-        contactFile.close();
+        rewriteContactFile.close();
     } else {
         cout << "Unable to open file \n";
     }
 }
-
 
 void menu() {
 
@@ -158,17 +154,18 @@ void menu() {
     cout << "5. Exit\n\n";
 }
 
-
 string getFirstName() {
     string enterFirstName;
     cout << "Enter contacts first name (char limit 15): ";
 
     do {
+
         getline(cin, enterFirstName);
         if (isStringEmpty(enterFirstName) == false) {
             cout << "Enter a valid First Name";
         }
     } while (isStringEmpty(enterFirstName) == false);
+
     return enterFirstName;
 }
 
