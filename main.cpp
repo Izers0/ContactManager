@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "contactFunctionHeader.h"
+#include "validation.h"
 using namespace std;
 
 int main() {
@@ -16,6 +17,8 @@ int main() {
 
         int userInput;
         cin >> userInput;
+
+        checkInputIsInteger(userInput);
 
         // Switch statement to take the users choice
         switch (userInput) {
@@ -40,7 +43,7 @@ int main() {
                 programRunning = false;
                 break;
             default:
-                cout << "Please Select 1-4\n";
+                cout << "Please Select 1-5\n";
         }
     }
 }

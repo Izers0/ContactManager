@@ -145,6 +145,7 @@ void deleteContact() {
     }
 }
 
+
 void menu() {
 
     cout << "1. View Contacts\n";
@@ -153,6 +154,7 @@ void menu() {
     cout << "4. Delete a Existing Contact\n";
     cout << "5. Exit\n\n";
 }
+
 
 string getFirstName() {
     string enterFirstName;

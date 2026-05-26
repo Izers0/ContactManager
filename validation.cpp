@@ -1,5 +1,6 @@
 #include "validation.h"
 #include <string>
+#include <iostream>
 using namespace std;
 
 bool isStringEmpty(std::string &userInput) {
@@ -19,4 +20,13 @@ void stringLength (int limit, std::string &userInput) {
     if (userInput.length() >= charLimit) {
         // No More Printing In Validation Code
     }
+}
+
+bool checkInputIsInteger (int &userInput) {
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore();
+        cout << "Please Enter a valid option to continue";
+    }
+    return true;
 }
