@@ -16,8 +16,6 @@ int main() {
         menu();
 
         int userInput;
-        cin >> userInput;
-
         checkInputIsInteger(userInput);
 
         // Switch statement to take the users choice

@@ -70,7 +70,7 @@ void editContact() {
 
     // user chooses the index of the contact they want to change
     int userInput;
-    cin >> userInput;
+    checkInputIsInteger(userInput);
 
     cin.ignore();
 
@@ -121,7 +121,7 @@ void deleteContact() {
 
     // user chooses the index of the contact they want to delete
     int userInput;
-    cin >> userInput;
+    checkInputIsInteger(userInput);
 
     cin.ignore();
 

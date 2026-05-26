@@ -1,6 +1,7 @@
 #include "validation.h"
 #include <string>
 #include <iostream>
+#include <limits>
 using namespace std;
 
 bool isStringEmpty(std::string &userInput) {
@@ -23,10 +24,12 @@ void stringLength (int limit, std::string &userInput) {
 }
 
 bool checkInputIsInteger (int &userInput) {
-    if (cin.fail()) {
+    while (!(cin >> userInput)) {
+        cout << "Please enter a valid number: ";
         cin.clear();
-        cin.ignore();
-        cout << "Please Enter a valid option to continue";
+
+        // maximum number of characters to ignore - \n character cin stops ignoring
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
     return true;
 }
