@@ -157,22 +157,31 @@ void menu() {
 
 
 string getFirstName() {
+
     string enterFirstName;
+    constexpr int characterLimit = 15;
     cout << "Enter contacts first name (char limit 15): ";
 
     do {
-
         getline(cin, enterFirstName);
-        if (isStringEmpty(enterFirstName) == false) {
+
+        while (isStringEmpty(enterFirstName) == false) {
             cout << "Enter a valid First Name";
         }
-    } while (isStringEmpty(enterFirstName) == false);
+
+        while (stringLength(characterLimit, enterFirstName)) {
+            cout << "Character Limit is  "<< characterLimit << "\n";
+            cout << "Enter contact first name (char limit 15): ";
+        }
+    } while (isStringEmpty(enterFirstName) == false && !stringLength(characterLimit, enterFirstName));
 
     return enterFirstName;
 }
 
 string getLastName() {
+
     string enterLastName;
+    constexpr int characterLimit = 20;
     cout << "Enter contact last name (char limit: 20): ";
 
     do {
@@ -181,12 +190,21 @@ string getLastName() {
             cout << "Enter a valid Last Name";
         }
     } while (isStringEmpty(enterLastName) == false);
+
+    do {
+        cout << "The character limit is " << characterLimit << "\n";
+        cout << "Enter contacts last name (char limit 20): ";
+        getline(cin, enterLastName);
+    } while (!stringLength(characterLimit, enterLastName));
+
     return enterLastName;
 }
 
 string getPhoneNumber() {
+
     string enterPhoneNumber;
-    cout << "Enter contact phone number: ";
+    constexpr int characterLimit = 11;
+    cout << "Enter contact phone number (char limit 11): ";
 
     do {
         getline(cin, enterPhoneNumber);
@@ -194,6 +212,13 @@ string getPhoneNumber() {
             cout << "Enter a valid Phone Number";
         }
     } while (isStringEmpty(enterPhoneNumber) == false);
+
+    do {
+        cout << "The character limit is " << characterLimit << "\n";
+        cout << "Enter the Contacts Phone Number (char Limit 11): ";
+        getline(cin, enterPhoneNumber);
+    } while (!stringLength(characterLimit, enterPhoneNumber));
+
     return enterPhoneNumber;
 }
 

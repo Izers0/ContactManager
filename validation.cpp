@@ -13,14 +13,15 @@ bool isStringEmpty(std::string &userInput) {
     return true;
 }
 
-void stringLength (int limit, std::string &userInput) {
+bool stringLength (int limit, std::string &userInput) {
 
     // set limit of string
     int charLimit = limit;
 
-    if (userInput.length() >= charLimit) {
-        // No More Printing In Validation Code
+    if (userInput.length() > charLimit) {
+        return false;
     }
+    return true;
 }
 
 bool checkInputIsInteger (int &userInput) {
