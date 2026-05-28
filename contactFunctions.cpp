@@ -160,42 +160,42 @@ string getFirstName() {
 
     string enterFirstName;
     constexpr int characterLimit = 15;
-    cout << "Enter contacts first name (char limit 15): ";
+    cout << "Enter the Contacts First Name (char limit 15): ";
 
     do {
         getline(cin, enterFirstName);
 
-        while (isStringEmpty(enterFirstName) == false) {
-            cout << "Enter a valid First Name";
+        if (isStringEmpty(enterFirstName) == false) {
+            cout << "Enter the First Name (char limit 15) \n";
         }
 
-        while (stringLength(characterLimit, enterFirstName)) {
-            cout << "Character Limit is  "<< characterLimit << "\n";
-            cout << "Enter contact first name (char limit 15): ";
+        if (!checkStringLength(characterLimit, enterFirstName)) {
+            cout << "First Name length is " << characterLimit << "\n";
         }
-    } while (isStringEmpty(enterFirstName) == false && !stringLength(characterLimit, enterFirstName));
 
-    return enterFirstName;
+    } while (isStringEmpty(enterFirstName) == false || !checkStringLength(characterLimit, enterFirstName));
+
+     return enterFirstName;
 }
 
 string getLastName() {
 
     string enterLastName;
     constexpr int characterLimit = 20;
-    cout << "Enter contact last name (char limit: 20): ";
+    cout << "Enter the Contacts Last Name (char limit: 20): ";
 
     do {
         getline(cin, enterLastName);
+
         if (isStringEmpty(enterLastName) == false) {
-            cout << "Enter a valid Last Name";
+            cout << "Enter the Last name (char limit 20) \n";
         }
-    } while (isStringEmpty(enterLastName) == false);
 
-    do {
-        cout << "The character limit is " << characterLimit << "\n";
-        cout << "Enter contacts last name (char limit 20): ";
-        getline(cin, enterLastName);
-    } while (!stringLength(characterLimit, enterLastName));
+        if (!checkStringLength(characterLimit, enterLastName)) {
+            cout << "Last Name length is " << characterLimit << "\n";
+        }
+
+    } while (isStringEmpty(enterLastName) == false || !checkStringLength(characterLimit, enterLastName));
 
     return enterLastName;
 }
@@ -204,20 +204,20 @@ string getPhoneNumber() {
 
     string enterPhoneNumber;
     constexpr int characterLimit = 11;
-    cout << "Enter contact phone number (char limit 11): ";
+    cout << "Enter the Phone Number (char limit 11): ";
 
     do {
         getline(cin, enterPhoneNumber);
+
         if (isStringEmpty(enterPhoneNumber) == false) {
-            cout << "Enter a valid Phone Number";
+            cout << "Enter the Phone Number (char limit 11) \n";
         }
-    } while (isStringEmpty(enterPhoneNumber) == false);
 
-    do {
-        cout << "The character limit is " << characterLimit << "\n";
-        cout << "Enter the Contacts Phone Number (char Limit 11): ";
-        getline(cin, enterPhoneNumber);
-    } while (!stringLength(characterLimit, enterPhoneNumber));
+        if (!checkStringLength(characterLimit, enterPhoneNumber)) {
+            cout << "Phone Number length is " << characterLimit << "\n";
+        }
+
+    } while (isStringEmpty(enterPhoneNumber) == false || !checkStringLength(characterLimit, enterPhoneNumber));
 
     return enterPhoneNumber;
 }

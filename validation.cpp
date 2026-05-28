@@ -13,7 +13,7 @@ bool isStringEmpty(std::string &userInput) {
     return true;
 }
 
-bool stringLength (int limit, std::string &userInput) {
+bool checkStringLength (int limit, std::string &userInput) {
 
     // set limit of string
     int charLimit = limit;
