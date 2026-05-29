@@ -71,6 +71,8 @@ void editContact() {
     // user chooses the index of the contact they want to change
     int userInput;
     checkInputIsInteger(userInput);
+    checkInputIsInRange(userInput, contacts);
+
 
     cin.ignore();
 

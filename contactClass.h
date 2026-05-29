@@ -21,7 +21,6 @@ public:
     void setPhoneNumber(std::string phoneNumber) {
         PhoneNumber = phoneNumber;
     }
-
     // Getters
     std::string getFirstName() {
         return FirstName;
@@ -30,7 +29,6 @@ public:
     std::string getLastName() {
         return LastName;
     }
-
     std::string getPhoneNumber() {
         return PhoneNumber;
     }

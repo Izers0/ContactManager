@@ -1,7 +1,10 @@
 #include "validation.h"
+
+#include <algorithm>
 #include <string>
 #include <iostream>
 #include <limits>
+#include <vector>
 using namespace std;
 
 bool isStringEmpty(std::string &userInput) {
@@ -33,4 +36,20 @@ bool checkInputIsInteger (int &userInput) {
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
     return true;
+}
+
+bool checkInputIsInRange (int &userInput, const vector<string> &contacts) {
+
+    if (userInput > contacts.size()) {
+        cout << "Please enter a valid number under limit: ";
+        return false;
+    }
+
+    if (userInput <= 0) {
+        cout << "Please enter a valid number in the limit please: ";
+        return false;
+    }
+
+    return true;
+
 }
